@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="rn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <title>Работа с системой(Сотрудник)</title>
+</head>
+<body class="text-center">
+
+<main class="form-signin">
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Группа</th>
+            <th scope="col">Расписание группы</th>
+        </tr>
+        </thead>
+        <div th:each="mp : ${map}" class="form-floating">
+            <tr>
+                <td th:text="${mp.getKey()}">...</td>
+                <td th:text="${mp.getValue()}">...</td>
+            </tr>
+        </div>
+    </table>
+
+    <form action="/main/employee/findStudents/" method="post" class="mb-5 mt-5">
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Найти студента по критериям</button>
+        <div class="form-floating">
+            <input name="fio" type="text" class="form-control" id="FIO" placeholder="Фамилия Имя отчество">
+            <label for="FIO">ФИО</label>
+        </div>
+
+        <div class="form-floating">
+            <input name="kurs" type="text" class="form-control" id="kurs" placeholder="Курс">
+            <label for="kurs">Курс</label>
+        </div>
+
+        <div class="form-floating">
+            <input name="fakultet" type="text" class="form-control" id="fakultet" placeholder="Факультет">
+            <label for="fakultet">Факультет</label>
+        </div>
+
+        <div class="form-floating">
+            <input name="pol" type="text" class="form-control" id="Pol" placeholder="Пол">
+            <label for="Pol">Пол</label>
+        </div>
+
+        <div class="form-floating">
+            <input name="dopSpecialnost" type="text" class="form-control" id="dop_specialnost"
+                   placeholder="Дополнительная специальность">
+            <label for="dop_specialnost">Дополнительная специальность</label>
+        </div>
+    </form>
+
+    <form action="/main/employee/findCurrentStudent" method="post" class="mt-5">
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Поиск студента</button>
+
+        <div class="form-floating">
+            <input name="studentId" type="text" class="form-control" id="studentId2"
+                   placeholder="Введите ID студента">
+            <label for="studentId2">Введите ID студента</label>
+        </div>
+    </form>
+
+    <form action="/main/employee/functionSuccess" method="post" class="mt-5">
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Функция успех</button>
+
+        <div class="form-floating">
+            <input name="kurs" type="text" class="form-control" id="kurs2"
+                   placeholder="Курс">
+            <label for="kurs2">Курс</label>
+        </div>
+    </form>
+
+
+    <form action="/main/employee/editSuccessFunction" method="post" class="mt-5">
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Редактировать информацию о Достижениях Студента</button>
+
+        <div class="form-floating">
+            <input name="studentId" type="text" class="form-control" id="studentId3"
+                   placeholder="Введите ID студента">
+            <label for="studentId3">Введите ID студента</label>
+        </div>
+
+        <div class="form-floating">
+            <input name="dostigeniaStudenta" type="text" class="form-control" id="dostigeniaStudenta"
+                   placeholder="Введите Достижения студента">
+            <label for="dostigeniaStudenta">Введите Достижения студента</label>
+        </div>
+
+        <div class="form-floating">
+            <input name="baliStudenta" type="text" class="form-control" id="baliStudenta"
+                   placeholder="Введите Баллы студента">
+            <label for="baliStudenta">Введите Баллы студента</label>
+        </div>
+    </form>
+
+    <form action="/main/employee/editHomework" method="post" class="mt-5">
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Добавить группе домашнее задание</button>
+
+        <div class="form-floating">
+            <input name="group" type="text" class="form-control" id="group"
+                   placeholder="Введите номер группы">
+            <label for="group">Введите номер группы</label>
+        </div>
+
+        <div class="form-floating">
+            <input name="homework" type="text" class="form-control" id="homework"
+                   placeholder="Введите номер группы">
+            <label for="homework">Введите домашнее задание студента</label>
+        </div>
+    </form>
+
+    <form action="/main/employee/exit" method="get" class="mt-5">
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Выйти</button>
+    </form>
+
+</main>
+</body>
+</html>

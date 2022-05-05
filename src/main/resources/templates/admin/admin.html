@@ -1,0 +1,182 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="rn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <title>Работа с системой(Администратор)</title>
+</head>
+<body class="text-center">
+
+<main class="form-signin">
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Фамилия Имя Отчество студента</th>
+            <th scope="col">Пол студента</th>
+            <th scope="col">Факультет студента</th>
+            <th scope="col">Курс студента</th>
+            <th scope="col">Выбранная доп. специальность студента</th>
+            <th scope="col">Остаток на счету за оплату обучения студента</th>
+            <th scope="col">Пересдачи или задолженности студента</th>
+            <th scope="col">Список достижений во время учебного процесса студента</th>
+            <th scope="col">Группа студента</th>
+            <th scope="col">Расписание группы</th>
+            <th scope="col">Дата начала обучения студента</th>
+            <th scope="col">Предполагаемая дата окончания обучения студента</th>
+            <th scope="col">Баллы студента в программе 'Успех'</th>
+        </tr>
+        </thead>
+        <div th:each="st : ${students}"  class="form-floating">
+            <tr>
+                <td th:text="${st.getId()}">...</td>
+                <td th:text="${st.getFio()}">...</td>
+                <td th:text="${st.getPol()}">...</td>
+                <td th:text="${st.getFakultet()}">...</td>
+                <td th:text="${st.getKurs()}">...</td>
+                <td th:text="${st.getDopSpecialnost()}">...</td>
+                <td th:text="${st.getOstatokNaSchetu()}">...</td>
+                <td th:text="${st.zadolgenstiToString()}">...</td>
+                <td th:text="${st.spisocDostigeniyToString()}">...</td>
+                <td th:text="${st.getGrupNumber()}">...</td>
+                <td th:text="${st.getRaspisanie()}">...</td>
+                <td th:text="${st.getDateStartEducation()}">...</td>
+                <td th:text="${st.getDateEndEducation()}">...</td>
+                <td th:text="${st.getKollichestovBalovVSystemeUspech()}">...</td>
+            </tr>
+        </div>
+    </table>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Логин</th>
+            <th scope="col">Пароль</th>
+            <th scope="col">ID</th>
+        </tr>
+        </thead>
+        <div th:each="us : ${users}" class="form-floating">
+            <tr>
+                <td th:text="${us.getLogin()}">...</td>
+                <td th:text="${us.getPassword()}">...</td>
+                <td th:text="${us.getId()}">...</td>
+            </tr>
+        </div>
+    </table>
+    <form action="/main/admin/editInfoAboutStudentPage" method="post" class="mb-5">
+        <button class="w-100 btn btn-lg btn-primary" type="submit" data-popper-placement="top">Редактирование информации
+            об обучающемся или добавление нового студента
+        </button>
+        <input name="id" type="text" class="form-control" id="floatingInput" placeholder="Введите id студента">
+    </form>
+
+    <form action="/main/admin/findStudents/" method="post" class="mb-5 mt-5">
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Найти студента по критериям</button>
+        <div class="form-floating">
+            <input name="fio" type="text" class="form-control" id="FIO" placeholder="Фамилия Имя отчество">
+            <label for="FIO">ФИО</label>
+        </div>
+
+        <div class="form-floating">
+            <input name="kurs" type="text" class="form-control" id="kurs" placeholder="Курс">
+            <label for="kurs">Курс</label>
+        </div>
+
+        <div class="form-floating">
+            <input name="fakultet" type="text" class="form-control" id="fakultet" placeholder="Факультет">
+            <label for="fakultet">Факультет</label>
+        </div>
+
+        <div class="form-floating">
+            <input name="pol" type="text" class="form-control" id="Pol" placeholder="Пол">
+            <label for="Pol">Пол</label>
+        </div>
+
+        <div class="form-floating">
+            <input name="dopSpecialnost" type="text" class="form-control" id="dop_specialnost"
+                   placeholder="Дополнительная специальность">
+            <label for="dop_specialnost">Дополнительная специальность</label>
+        </div>
+    </form>
+
+    <form action="/main/admin/findCurrentStudent" method="post" class="mt-5">
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Поиск студента</button>
+
+        <div class="form-floating">
+            <input name="studentId" type="text" class="form-control" id="studentId2"
+                   placeholder="Введите ID студента">
+            <label for="studentId2">Введите ID студента</label>
+        </div>
+    </form>
+
+    <form action="/main/admin/functionSuccessAdmin" method="post" class="mt-5">
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Функция успех</button>
+
+        <div class="form-floating">
+            <input name="kurs" type="text" class="form-control" id="kurs2"
+                   placeholder="Курс">
+            <label for="kurs2">Курс</label>
+        </div>
+    </form>
+
+    <form action="/main/admin/editSuccessFunction" method="post" class="mt-5">
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Редактировать информацию о Достижениях Студента</button>
+
+        <div class="form-floating">
+            <input name="studentId" type="text" class="form-control" id="studentId3"
+                   placeholder="Введите ID студента">
+            <label for="studentId3">Введите ID студента</label>
+        </div>
+
+        <div class="form-floating">
+            <input name="dostigeniaStudenta" type="text" class="form-control" id="dostigeniaStudenta"
+                   placeholder="Введите Достижения студента">
+            <label for="dostigeniaStudenta">Введите Достижения студента</label>
+        </div>
+
+        <div class="form-floating">
+            <input name="baliStudenta" type="text" class="form-control" id="baliStudenta"
+                   placeholder="Введите Баллы студента">
+            <label for="baliStudenta">Введите Баллы студента</label>
+        </div>
+    </form>
+
+
+    <form action="/main/admin/editZadolgennosti" method="post" class="mt-5">
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Редактировать задолженность студента</button>
+
+        <div class="form-floating">
+            <input name="studentId" type="text" class="form-control" id="studentId"
+                   placeholder="Введите id студента">
+            <label for="studentId">Введите id студента</label>
+        </div>
+
+        <div class="form-floating">
+            <input name="zadolgennost" type="text" class="form-control" id="zadolgennost"
+                   placeholder="Задолженности">
+            <label for="zadolgennost">Задолженности</label>
+        </div>
+    </form>
+
+    <form action="/main/admin/editRaspisanie" method="post" class="mt-5">
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Редактировать расписание группы</button>
+
+        <div class="form-floating">
+            <input name="groupNumber" type="text" class="form-control" id="groupNumber"
+                   placeholder="Введите номер группы">
+            <label for="groupNumber">Введите номер группы</label>
+        </div>
+
+        <div class="form-floating">
+            <input name="raspisanieGrupi" type="text" class="form-control" id="raspisanieGrupi"
+                   placeholder="Введите расписание">
+            <label for="raspisanieGrupi">Введите расписание</label>
+        </div>
+    </form>
+
+    <form action="/main/admin/exit" method="get" class="mt-5">
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Выйти</button>
+    </form>
+
+</main>
+</body>
+</html>

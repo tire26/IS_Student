@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="rn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <title>Работа с системой(Студент)</title>
+</head>
+<body class="text-center">
+
+<main class="form-signin">
+    <form action="/main/student/viewSelfInfo" method="post" class="mb-1">
+        <h1 class="h3 mb-3 fw-normal">Выберите нужную команду</h1>
+        <button class="w-100 btn btn-lg btn-primary" type="submit" data-popper-placement="top">Просмотр своей личной информации</button>
+    </form>
+    <form action="/main/student/viewEducationDept/" method="post" class="mb-1">
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Просмотр задолженности по учебе</button>
+    </form>
+    <form action="/main/student/viewSchedulesAndHomework/" method="post" class="mb-1">
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Просмотр личного расписания и домашнего задания</button>
+    </form>
+    <form action="/main/student/exit" method="get" class="mt-5">
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Выйти</button>
+    </form>
+</main>
+</body>
+</html>

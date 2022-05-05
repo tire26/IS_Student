@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="rn">
+<head>
+    <title>Страница входа</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+</head>
+<body class="text-center">
+
+<main class="form-signin">
+    <form method="post" action="/main/enter">
+        <h1 class="h3 mb-3 fw-normal">Введите логин и пароль для входа в систему</h1>
+        <div class="form-floating">
+            <input name="login" type="text" class="form-control" id="floatingInput" placeholder="Логин">
+            <label for="floatingInput">Логин</label>
+        </div>
+        <div class="form-floating">
+            <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Пароль">
+            <label for="floatingPassword">Пароль</label>
+            </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit" name="enter">Войти</button>
+    </form>
+    <div th:text="${notFind}"></div>
+</main>
+</body>
+</html>

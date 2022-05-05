@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="rn">
+<head>
+    <title>Редактирование информации о студенте</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+</head>
+<body class="text-center">
+
+<main class="form-signin">
+    <form method="post" action="/main/admin/editInfoAboutStudent/makeEdit" class="mt-2 mb-2">
+        <h1 class="h3 mb-3 fw-normal">Введите информацию о студенте, нужно ввести информацию во все поля</h1>
+        <div class="form-floating">
+            <input name="login" type="text" class="form-control" id="login" placeholder="Логин">
+            <label for="login">Логин</label>
+        </div>
+
+
+        <div class="form-floating">
+            <input name="password" type="text" class="form-control" id="password" placeholder="Пароль">
+            <label for="password">Пароль</label>
+        </div>
+
+        <div class="form-floating">
+            <input name="fio" type="text" class="form-control" id="FIO" placeholder="Фамилия Имя отчество">
+            <label for="FIO">ФИО</label>
+        </div>
+
+        <div class="form-floating">
+            <input name="phone" type="text" class="form-control" id="phone" placeholder="Телефон">
+            <label for="phone">Телефон</label>
+        </div>
+
+        <div class="form-floating">
+            <input name="kurs" type="text" class="form-control" id="kurs" placeholder="Курс">
+            <label for="kurs">Курс</label>
+        </div>
+
+        <div class="form-floating">
+            <input name="fakultet" type="text" class="form-control" id="fakultet" placeholder="Факультет">
+            <label for="fakultet">Факультет</label>
+        </div>
+
+        <div class="form-floating">
+            <input name="pol" type="text" class="form-control" id="Pol" placeholder="Пол">
+            <label for="Pol">Пол</label>
+        </div>
+
+        <div class="form-floating">
+            <input name="dataNachalaObuchenia" type="date" class="form-control" id="data_nachala_obuchenia"
+                   placeholder="Дата начала обучения">
+            <label for="data_nachala_obuchenia">Дата начала обучения</label>
+        </div>
+
+        <div class="form-floating">
+            <input name="dataOkonchaniaObuchenia" type="date" class="form-control" id="data_okonchania_obuchenia"
+                   placeholder="Дата окончания обучения">
+            <label for="data_okonchania_obuchenia">Дата окончания обучения</label>
+        </div>
+
+        <div class="form-floating">
+            <input name="dopSpecialnost" type="text" class="form-control" id="dop_specialnost"
+                   placeholder="Дополнительная специальность">
+            <label for="dop_specialnost">Дополнительная специальность</label>
+        </div>
+
+        <div class="form-floating">
+            <input name="groupOrWork" type="text" class="form-control" id="grup_mesto_raboti"
+                   placeholder="Группа или место работы">
+            <label for="grup_mesto_raboti">Группа или место работы</label>
+        </div>
+
+        <div class="form-floating">
+            <input name="ostatokNaSchetu" type="text" class="form-control" id="ostatok_na_schetu"
+                   placeholder="Остаток на счету">
+            <label for="ostatok_na_schetu">Остаток на счету</label>
+        </div>
+
+        <button class="w-100 btn btn-lg btn-primary" type="submit" name="makeEdit">Внести изменения</button>
+    </form>
+    <form action="/main/admin/editInfoAboutStudent/exit" method="get" class="mt-5">
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Выйти</button>
+    </form>
+</main>
+</body>
+</html>
